@@ -1,0 +1,23 @@
+from __future__ import print_function
+
+import boto3
+import json
+from boto3.dynamodb.conditions import Key, Attr
+
+def lambda_handler(event, context):
+    
+    dynamo = boto3.resource('dynamodb').Table('ProjectFunction')
+    
+
+    response = dynamo.query(
+        KeyConditionExpression=Key('ProjectFunctionEmail').eq('ccccc@naver.com')
+        ) 
+    
+    lst = []
+    for i in response['Items']:
+        lst.append(i['Name'])
+        lst.append(i['ProjectFunctionEmail'])
+        lst.append(i['Password'])
+        print('\n')
+
+    return lst
