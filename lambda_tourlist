@@ -1,0 +1,40 @@
+from __future__ import print_function
+import json
+import os
+import boto3
+import decimal
+from boto3.dynamodb.conditions import Key, Attr
+
+#Helper class toconvert a DynamoDB item to JSON
+class DecimalEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, deciaml.Deciaml):
+            if o % 1 > 0: 
+                return float(o)
+            else:
+                return int(o)
+        return super(DecimalEncoder, self).default(o)
+        
+def lambda_handler(event, context):
+
+    dynamodb=boto3.resource('dynamodb')
+    table=dynamodb.Table("TourDetail")
+    print("TourList in Country")
+    
+    #TourList = event['TourName'] +' '+ event['Country'] +' '+ event['Area'] +' '+ event['Price']
+    #TourList=event["Country"]  #변수 오류 : price
+    
+    response=table.query(
+        KeyConditionExpression=Key('Country').eq('Thailand')
+    )
+    
+    lst=[]   
+    for i in response['Items']:
+        lst.append(i['TourName'])
+        lst.append(i['Country'])
+        lst.append(i['Area'])
+        lst.append(i['Price'])
+       
+        #print(i['Country'], ":", i['Area'])
+        
+    return lst
