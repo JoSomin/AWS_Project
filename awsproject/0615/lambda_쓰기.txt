@@ -1,0 +1,32 @@
+import json
+import boto3
+
+dynamodb = boto3.resource('dynamodb')
+table = dynamodb.Table('ProjectFunction')
+
+def lambda_handler(event, context):
+    email = event['email']
+    password = event['password']
+    name = event['name']
+   
+    response = table.put_item(
+        Item={
+            'ProjectFunctionEmail': email,
+            'Password': password,
+            'Name': name
+            })
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps('Success!, ' + name)
+    }
+
+
+테스트이벤트
+ex) 
+
+{
+  "email": "test@hanmail.net",
+  "password": "qazwsx123",
+  "name": "soeun"
+}

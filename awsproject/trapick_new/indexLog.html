@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>trapick</title>
+        <link rel="stylesheet" href="css/base.css"/>
+        <link rel="stylesheet" href="css/layout.css"/>
+        <link rel="stylesheet" href="css/main.css"/>
+        <link rel="stylesheet" href="css/sub.css"/>
+        <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+        <script src="js/aws-cognito-sdk.min.js"></script>
+        <script src="js/amazon-cognito-identity.min.js"></script>
+        <script src="js/config.js"></script>
+        <script src="js/cognito-auth.js"></script>
+        <script src="js/slick.js"></script>
+        <script src="js/script.js"></script>
+    </head>
+    <body>
+       <div class="skip-navigation">
+			<p><a href="#container">본문 바로가기</a></p>
+		</div>
+        <div class="wrap">
+           <div class="header">
+				<h1 class="logoArea"><a href="index.html"><img src="img/layout/logo.PNG" alt="프로필사진"/></a></h1>
+				<form action="#">
+					<fieldset>
+						<legend>통합검색</legend>
+						<input type="text" title="검색단어입력" placeholder="검색단어입력" class="SearchWordInput"/>
+						<input type="image" src="img/layout/search.png" alt="검색" class="Search"/>
+					</fieldset>
+				</form>
+				<div class="util">
+					<a href="#" class="allMenuBtn"><img src="img/layout/allMenuBtn.png" alt="마이페이지보기"/></a>
+					<div class="menuArea">
+						<p class="myPage">
+							<a href="#" class="closeBtn">
+								<img src="img/layout/closeBtn.png" alt="마이페이지닫기"/>
+							</a>
+							마이페이지
+						</p>
+						<div class="profile">
+							<img src="img/layout/profilePhoto.png" alt="프로필사진"/>
+							<span>이름</span>
+							<p><a href="#">내정보수정하기</a></p>
+						</div>
+						<ul class="gnb">
+							<li>
+								<a href="#" class="bookmark">즐겨찾기</a>
+								<a href="#" class="postscript">후기관리</a>
+								<a href="#" class="history">히스토리</a>
+							</li>
+						</ul>
+					</div>
+        		</div>          	
+            </div>
+            <div class="container" id="container">
+                <div class="section1">
+                	<p class="section1Title">OO님<br/>어서오세요</p>
+                </div>
+                <div class="mainSlick">
+                	<div><a href="#"><img src="img/main/mainSlick1.png" alt="언제나 편리한 이동수단을 위해"/></a></div>
+                    <div><a href="#"><img src="img/main/mainSlick2.png" alt="언제나 고민없는 선택과 집중"/></a></div>
+                </div>
+                <div class="section2">
+                	<p class="section2Title">원하는 관광지를 선택하세요</p>
+                	<div class="selectionOfAnArea">
+                		<a href="mainSelected01.html">동남아</a>
+                		<a href="#">유럽</a>
+                		<a href="#">일본</a>
+                		<a href="#">중국</a>
+                		<a href="#">남태평양</a>
+                		<a href="#">미국/캐나다</a>
+                		<a href="#">서남아/중앙아시아</a>
+                		<a href="#">중동/아프리카</a>
+                		<a href="#">중남미</a>
+                	</div>
+                </div>
+            </div>
+            <ul class="mainGnb">
+            	<li><a href="index.html" class="on">홈</a></li>
+            	<li><a href="sub01.html">지도</a></li>
+            	<li><a href="sub02.html">커뮤니티</a></li>
+            	<li><a href="sub03.html">즐겨찾기</a></li>
+            </ul>
+        </div>  
+    </body>
+</html>

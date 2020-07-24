@@ -1,0 +1,65 @@
+﻿해당 열 전체 반환
+
+from __future__ import print_function
+
+import boto3
+import json
+from boto3.dynamodb.conditions import Key, Attr
+
+def lambda_handler(event, context):
+
+    dynamo = boto3.resource('dynamodb').Table('ProjectFunction')
+    email = event["email"]
+
+    response = dynamo.query(
+        KeyConditionExpression=Key('ProjectFunctionEmail').eq(email)
+        )
+    
+    items = response['Items']
+    return items
+
+이벤트테스트
+{
+ "email": "test2@naver.com"
+}
+
+
+
+
+>해당 이메일 사용자의 이름만 반환
+
+
+from __future__ import print_function
+
+import boto3
+import json
+from boto3.dynamodb.conditions import Key, Attr
+
+def lambda_handler(event, context):
+
+    dynamo = boto3.resource('dynamodb').Table('ProjectFunction')
+    email = event["email"]
+
+    response = dynamo.query(
+        KeyConditionExpression=Key('ProjectFunctionEmail').eq(email)
+        )
+    
+    lst = []
+    for i in response['Items']:
+        lst.append(i['Name'])
+
+    return lst
+
+    return {
+        'statusCode': 200,
+        'body': json.dumps(lst))
+    }
+
+    return json.dumps(lst)
+
+
+이벤트테스트
+{
+ "email": "test2@naver.com"
+}
+
